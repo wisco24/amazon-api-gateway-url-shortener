@@ -23,25 +23,10 @@
     "@vue/cli-plugin-vuex": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
     "babel-eslint": "^10.1.0",
-    "eslint": "9.22.0",
-    "eslint-plugin-vue": "^10.0.0",
+    "@babel/eslint-parser": "^7.12.16",
     "sass": "^1.85.1",
     "sass-loader": "^16.0.5",
     "vue-template-compiler": "^2.7.16"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
   },
   "browserslist": [
     "> 1%",
