@@ -10,7 +10,7 @@
           v-on:click="toggleModal('create')"
         >
           New Shortcut
-        </button>
+        </button><p></p>
       </div>
     </div>
     <!-- Edit Modal -->
@@ -19,14 +19,11 @@
       <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title">
-            <span v-if="modalTypeCreate">Create</span>
-            <span v-else>Update</span> Sliplink
+            Current Mode: 
+            <span v-if="modalTypeCreate">New</span>
+            <span v-else>Update</span> Shortcut
           </p>
-          <button
-            class="delete"
-            v-on:click="toggleModal()"
-            aria-label="close"
-          ></button>
+
         </header>
         <section class="modal-card-body">
           <div class="field">
@@ -72,6 +69,7 @@
         </section>
       </div>
     </div>
+    <h1 class="title">Current Shortcuts</h1>
     <div class="columns is-multiline">
       <div
         class="column is-one-third"
@@ -81,7 +79,7 @@
         <div class="card">
           <header class="card-header has-background-info">
             <p class="card-header-title has-text-white">
-              {{ link.id }}
+             <h3>Shortlink:  {{ link.id }}</h3>
             </p>
             <a href="#" class="card-header-icon" aria-label="more options">
               <span class="icon">
@@ -92,7 +90,7 @@
           <div class="card-content">
             <div class="content">
               <div class="text-clip" :title="link.url">
-                {{ link.url }}
+               URL: {{ link.url }}
               </div>
               <div class="is-size-7">
                 <time>{{ link.timestamp | formatDate }}</time>
@@ -104,19 +102,13 @@
               v-on:click="toggleModal('edit', link, i)"
               href="#"
               class="card-footer-item"
-              >Edit  </a
-            >
+              >Edit</a
+            >  or  
             <a
               v-on:click="deleteLink(link.id, i)"
               href="#"
               class="card-footer-item"
-              >Delete  </a
-            >
-            <a
-              target="_blank"
-              :href="apiUrl + '/' + link.id"
-              class="card-footer-item"
-              >Try it</a
+              >Delete</a
             >
           </footer>
         </div>
@@ -194,7 +186,7 @@ export default {
         .catch((err) => {
           // eslint-disable-next-line
           console.log(`POST to ${that.apiUrl}/app caught error ${err}`);
-          alert("SlipLink cannot be created. Bad format.");
+          alert("Shortcut cannot be created. Bad format.");
         });
     },
     updateLink: function () {
@@ -211,11 +203,11 @@ export default {
             that.toggleModal();
             that.$store.commit("updateLink", response.data, that.currentIndex);
           } else {
-            alert("There was an issue deleting your SlipLink");
+            alert("There was an issue deleting your Shortcut");
           }
         })
         .catch(() => {
-          alert("There was an issue deleting your SlipLink");
+          alert("There was an issue deleting your Shortcut");
         });
     },
     deleteLink: function (id, ind) {
@@ -233,7 +225,7 @@ export default {
             if (response.status === 200) {
               that.$store.commit("removeLink", ind);
             } else {
-              alert("There was an issue deleting your SlipLink");
+              alert("There was an issue deleting your Shortcut");
             }
           })
           .catch((err) => {
