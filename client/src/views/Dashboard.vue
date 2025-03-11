@@ -57,7 +57,7 @@
             need to clear your local cache.
           </p>
         </section>
-        <footer class="modal-card-foot">
+        <section class="modal-card-body">
           <button
             v-if="modalTypeCreate"
             v-on:click="createLink()"
@@ -69,7 +69,7 @@
             Update
           </button>
           <button class="button" v-on:click="toggleModal()">Cancel</button>
-        </footer>
+        </section>
       </div>
     </div>
     <div class="columns is-multiline">
@@ -104,13 +104,13 @@
               v-on:click="toggleModal('edit', link, i)"
               href="#"
               class="card-footer-item"
-              >Edit</a
+              >Edit  </a
             >
             <a
               v-on:click="deleteLink(link.id, i)"
               href="#"
               class="card-footer-item"
-              >Delete</a
+              >Delete  </a
             >
             <a
               target="_blank"
