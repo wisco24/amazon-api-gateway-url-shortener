@@ -1,19 +1,3 @@
-<!-- Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-SPDX-License-Identifier: MIT-0
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this
-software and associated documentation files (the "Software"), to deal in the Software
-without restriction, including without limitation the rights to use, copy, modify,
-merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
-
 <template>
   <div class="dashboard">
     <div class="columns is-mobile">
@@ -29,58 +13,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
         </button>
       </div>
     </div>
-
-    <div class="columns is-multiline">
-      <div
-        class="column is-one-third"
-        v-for="(link, i) in links"
-        v-bind:key="link.id"
-      >
-        <div class="card">
-          <header class="card-header has-background-info">
-            <p class="card-header-title has-text-white">
-              {{ link.id }}
-            </p>
-            <a href="#" class="card-header-icon" aria-label="more options">
-              <span class="icon">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
-              </span>
-            </a>
-          </header>
-          <div class="card-content">
-            <div class="content">
-              <div class="text-clip" :title="link.url">
-                {{ link.url }}
-              </div>
-              <div class="is-size-7">
-                <time>{{ link.timestamp | formatDate }}</time>
-              </div>
-            </div>
-          </div>
-          <footer class="card-footer">
-            <a
-              v-on:click="toggleModal('edit', link, i)"
-              href="#"
-              class="card-footer-item"
-              >Edit</a
-            >
-            <a
-              v-on:click="deleteLink(link.id, i)"
-              href="#"
-              class="card-footer-item"
-              >Delete</a
-            >
-            <a
-              target="_blank"
-              :href="apiUrl + '/' + link.id"
-              class="card-footer-item"
-              >Try it</a
-            >
-          </footer>
-        </div>
-      </div>
-    </div>
-
     <!-- Edit Modal -->
     <div class="modal" v-bind:class="{ 'is-active': modalIsActive }">
       <div class="modal-background"></div>
@@ -140,6 +72,58 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
         </footer>
       </div>
     </div>
+    <div class="columns is-multiline">
+      <div
+        class="column is-one-third"
+        v-for="(link, i) in links"
+        v-bind:key="link.id"
+      >
+        <div class="card">
+          <header class="card-header has-background-info">
+            <p class="card-header-title has-text-white">
+              {{ link.id }}
+            </p>
+            <a href="#" class="card-header-icon" aria-label="more options">
+              <span class="icon">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </a>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <div class="text-clip" :title="link.url">
+                {{ link.url }}
+              </div>
+              <div class="is-size-7">
+                <time>{{ link.timestamp | formatDate }}</time>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <a
+              v-on:click="toggleModal('edit', link, i)"
+              href="#"
+              class="card-footer-item"
+              >Edit</a
+            >
+            <a
+              v-on:click="deleteLink(link.id, i)"
+              href="#"
+              class="card-footer-item"
+              >Delete</a
+            >
+            <a
+              target="_blank"
+              :href="apiUrl + '/' + link.id"
+              class="card-footer-item"
+              >Try it</a
+            >
+          </footer>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </template>
 

@@ -60,7 +60,7 @@
         </div>
         <div v-else>
           <h1 class="title">Welcome to {{ appName }}</h1>
-          <h2 class="subtitle">The NEWEST URL shortener on the block.</h2>
+          <h2 class="subtitle">The Trend Micro Consumer Product URL System.</h2>
           <p v-if="linkNotFound">
             We're sorry, that link could not be found.
             <a v-bind:href="signUpUrl">Sign up</a> or
